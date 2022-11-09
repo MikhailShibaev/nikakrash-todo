@@ -1,3 +1,4 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/db3679cab3a64f1fad03bd27e3aea953)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MikhailShibaev/nikakrash-todo&amp;utm_campaign=Badge_Grade)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
