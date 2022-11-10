@@ -2,20 +2,20 @@ import { Card } from '@material-ui/core';
 import { Checkbox } from '@material-ui/core';
 import styles from './Task.module.css';
 
-function Task(props) {
-  const classes = [styles.card];
+function Task({ status, onChange, id, text, data}) {
+  const classNames = [styles.card];
 
-  props.status === 'done' ? classes.push(styles.done) : classes.push(styles.inProgress);
+  status === 'done' ? classNames.push(styles.done) : classNames.push(styles.inProgress);
 
   return (
     <div className={styles.wrapper}>
-      <Checkbox onChange={() => props.onChange(props.id)} checked={props.status === 'done'} />
-      <Card className={classes.join(' ')}>
+      <Checkbox onChange={() => onChange(id)} checked={status === 'done'} />
+      <Card className={classNames.join(' ')}>
         <div className={styles.text}>
-          {props.text}
+          {text}
         </div>
         <div className={styles.date}>
-          {props.data}
+          {data}
         </div>
       </Card>
       <button className={styles.button}>x</button>

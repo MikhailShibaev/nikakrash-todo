@@ -1,15 +1,15 @@
 import Task from '../Task/Task';
 import styles from './TaskList.module.css';
 
-function TaskList(props) {
+function TaskList({ tasksData, onChange }) {
   return (
     <div className={styles.list}>
-      {props.tasksData.map(data => <Task
+      {tasksData.map(data => <Task
                                     text={data.text}
                                     data={data.date}
                                     key={data.id}
                                     status={data.status}
-                                    onChange={props.onChange}
+                                    onChange={onChange}
                                     id={data.id}
                                   />
       )}
