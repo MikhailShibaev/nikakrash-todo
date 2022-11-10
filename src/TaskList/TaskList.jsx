@@ -1,5 +1,12 @@
 import Task from '../Task/Task';
+import PropTypes from 'prop-types';
+import { taskData } from '../types';
 import styles from './TaskList.module.css';
+
+TaskList.propTypes = {
+  tasksData: PropTypes.arrayOf(taskData).isRequired,
+  onChange: PropTypes.func.isRequired
+}
 
 function TaskList({ tasksData, onChange }) {
   return (

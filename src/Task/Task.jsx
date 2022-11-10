@@ -1,8 +1,17 @@
 import { Card } from '@material-ui/core';
 import { Checkbox } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import styles from './Task.module.css';
 
-function Task({ status, onChange, id, text, data}) {
+Task.propTypes = {
+  status: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
+}
+
+function Task({ status, onChange, id, text, data }) {
   const classNames = [styles.card];
 
   status === 'done' ? classNames.push(styles.done) : classNames.push(styles.inProgress);
