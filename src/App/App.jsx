@@ -46,20 +46,18 @@ function App() {
 
   return (
     <>
-      <div className={styles.titleContainer}>
-        <div className={styles.title}>Добавьте задачу</div>
-        <label className={styles.filter}>
-          <Checkbox onChange={(e) => setFilterByKey('key', e.target.checked ? 'done' : 'both')}/>
-          Посмотреть выполненные
-        </label>
-      </div>
       <div className={styles.container}>
         <div className={styles.textareaContainer}>
+          <div className={styles.title}>Добавьте задачу</div>
           <textarea className={styles.textarea} onChange={(e) => setDataByKey('value', e.target.value)} value={data.value} />
           <input type="date" className={styles.calendar} onChange={(e) => setDataByKey('date', e.target.value)} value={data.date} />
           <button className={styles.addButton} onClick={addTask} disabled={!data.value||!data.date}>Добавить</button>
         </div>
         <div>
+          <label className={styles.filter}>
+            <Checkbox onChange={(e) => setFilterByKey('key', e.target.checked ? 'done' : 'both')}/>
+            Посмотреть выполненные
+          </label>
           <TaskList state={state} setState={setState} filter={filter}/>
         </div>
       </div>
