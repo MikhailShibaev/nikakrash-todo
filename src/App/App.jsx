@@ -54,10 +54,13 @@ function App() {
           <button className={styles.addButton} onClick={addTask} disabled={!data.value||!data.date}>Добавить</button>
         </div>
         <div>
-          <label className={styles.filter}>
-            <Checkbox onChange={(e) => setFilterByKey('key', e.target.checked ? 'done' : 'both')}/>
-            Посмотреть выполненные
-          </label>
+          {
+            state.length !== 0 &&
+            <label className={styles.filter}>
+              <Checkbox onChange={(e) => setFilterByKey('key', e.target.checked ? 'done' : 'both')}/>
+              Посмотреть выполненные
+            </label>
+          }
           <TaskList state={state} setState={setState} filter={filter}/>
         </div>
       </div>
