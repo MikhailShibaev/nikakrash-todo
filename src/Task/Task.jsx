@@ -1,24 +1,16 @@
-import { Card } from '@material-ui/core';
-import { Checkbox } from '@material-ui/core';
+import React from 'react';
+import { Card, Checkbox } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from './Task.module.css';
 
-Task.propTypes = {
-  status: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
-}
-
-function Task({ status, onChange, id, text, data }) {
+function Task({ text, data, onClick, id, isSuccess, toggleTask }) {
   const classNames = [styles.card];
 
-  status === 'done' ? classNames.push(styles.done) : classNames.push(styles.inProgress);
+  classNames.push(isSuccess ? styles.done : styles.inProgress);
 
   return (
     <div className={styles.wrapper}>
-      <Checkbox onChange={() => onChange(id)} checked={status === 'done'} />
+      <Checkbox onChange={() => toggleTask(id)} checked={isSuccess}/>
       <Card className={classNames.join(' ')}>
         <div className={styles.text}>
           {text}
@@ -27,9 +19,18 @@ function Task({ status, onChange, id, text, data }) {
           {data}
         </div>
       </Card>
-      <button className={styles.button}>x</button>
+      <button className={styles.button} type="button" onClick={() => onClick(id)}>x</button>
     </div>
   );
 }
+
+Task.propTypes = {
+  text: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  isSuccess: PropTypes.bool.isRequired,
+  toggleTask: PropTypes.func.isRequired
+};
 
 export default Task;
